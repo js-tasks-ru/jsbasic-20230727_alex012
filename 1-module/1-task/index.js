@@ -1,3 +1,7 @@
 function factorial(n) {
-  // ваш код...
+  let product = 1;
+  for (let i = 1; i <= n; i++) {
+    product = i * product;
+  }
+  return product;
 }
