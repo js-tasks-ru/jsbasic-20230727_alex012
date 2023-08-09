@@ -1,3 +1,7 @@
 function namify(users) {
-  // ваш код...
+  let arr = [];
+  users.forEach(function(item, index) {
+    arr[index] = item.name;
+  });
+  return arr;
 }
