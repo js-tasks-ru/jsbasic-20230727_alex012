@@ -1,5 +1,4 @@
 function camelize(str) {
-  // ваш код...
   if (!str) {
     return str;
   }
