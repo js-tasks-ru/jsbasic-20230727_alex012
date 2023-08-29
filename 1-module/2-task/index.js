@@ -10,11 +10,11 @@ function print(text) {
  * чтобы функция sayHello работала корректно
  */
 function isValid(name) {
-  if(name == null || name.includes(' ') || name.length < 4) {
+  if (name == null || name.includes(' ') || name.length < 4) {
     return false;
   }
 
-  if(name[0] === name[0].toUpperCase()) {
+  if (name[0] === name[0].toUpperCase()) {
     return true;
   }
 }
