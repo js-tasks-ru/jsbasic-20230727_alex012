@@ -6,7 +6,6 @@ export default class Carousel {
     this.elem = this.renderCarousel();
     setTimeout(() => {
       this.startSlider();
-      // this.addProduct(slides);
     }, 0);
   }
 
