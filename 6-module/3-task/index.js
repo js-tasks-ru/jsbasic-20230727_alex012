@@ -4,9 +4,10 @@ export default class Carousel {
   constructor(slides) {
     this.slides = slides;
     this.elem = this.renderCarousel();
-    setTimeout(() => {
-      this.startSlider();
-    }, 0);
+    this.startSlider();
+    // setTimeout(() => {
+    //   this.startSlider();
+    // }, 0);
   }
 
   renderCarousel() {
@@ -45,17 +46,19 @@ export default class Carousel {
   }
 
   startSlider() {
-    this.rightArrow = document.querySelector('.carousel__arrow_right');
-    this.leftArrow = document.querySelector('.carousel__arrow_left');
-    this.carousel = document.querySelector('.carousel');
-    this.carouselSlide = document.querySelectorAll('.carousel__slide');
+    // Слайдер находится в переменной this.carousel и ннадо искать все кнопки и т.д. внутри него, а не в документе
+    this.rightArrow = this.carousel.querySelector('.carousel__arrow_right');
+    this.leftArrow = this.carousel.querySelector('.carousel__arrow_left');
+    // this.carousel = document.querySelector('.carousel');
+    this.carouselSlide = this.carousel.querySelectorAll('.carousel__slide');
 
-    this.carouselInner = document.querySelector('.carousel__inner');
+    this.carouselInner = this.carousel.querySelector('.carousel__inner');
 
-    this.slideWidth = this.carouselInner.offsetWidth; // 988
+    // Ширину надо высчитывать в момент клика т.к. на данном этапе карусели ещё нет на странице (в DOM-дереве) и ширина равна 0
+    // this.slideWidth = this.carouselInner.offsetWidth;
     this.numberSlide = 0;
 
-    this.carouselInner = document.querySelector('.carousel__inner');
+    // this.carouselInner = document.querySelector('.carousel__inner');
     this.total = this.carouselInner.querySelectorAll('.carousel__slide').length - 1;
 
     this.carouselInner.dataset.index = '1';
@@ -66,6 +69,9 @@ export default class Carousel {
     }
 
     this.rightArrow.addEventListener('click', (event) => {
+      // Ширину надо высчитывать в момент клика т.к. на данном этапе карусели ещё нет на странице (в DOM-дереве) и ширина равна 0
+      this.slideWidth = this.carouselInner.offsetWidth;
+
       this.carouselInner.dataset.index = ++this.numberSlide;
       this.carouselInner.style.transform = `translateX(-${this.slideWidth * this.carouselInner.dataset.index}px)`;
 
@@ -79,6 +85,9 @@ export default class Carousel {
     });
 
     this.leftArrow.addEventListener('click', (event) => {
+      // Ширину надо высчитывать в момент клика т.к. на данном этапе карусели ещё нет на странице (в DOM-дереве) и ширина равна 0
+      this.slideWidth = this.carouselInner.offsetWidth;
+
       this.carouselInner.dataset.index = --this.numberSlide;
 
       this.carouselInner.style.transform = `translateX(-${this.carouselInner.dataset.transform - this.slideWidth}px)`; // slideWidth = 988
